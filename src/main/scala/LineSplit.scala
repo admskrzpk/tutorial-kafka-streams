@@ -1,10 +1,8 @@
 import org.apache.kafka.common.serialization.Serdes
 import org.apache.kafka.streams.{KafkaStreams, StreamsBuilder, StreamsConfig}
-
 import java.util
 import java.util.Properties
 import java.util.concurrent.CountDownLatch
-import scala.concurrent.Future.never.value
 
 object LineSplit extends App {
   val props = new Properties
@@ -14,13 +12,6 @@ object LineSplit extends App {
   props.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.String.getClass)
 
   val builder = new StreamsBuilder
-
-  import org.apache.kafka.streams.kstream.KStream
-  import org.apache.kafka.streams.kstream.ValueMapper
-  import java.util
-
-  import org.apache.kafka.streams.kstream.KStream
-  import java.util
 
   val source = builder.stream("streams-plaintext-input")
   source
